@@ -197,6 +197,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Home page search functionality
+    const homeSearchInput = document.getElementById('homeSearchInput');
+    if (homeSearchInput) {
+        homeSearchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.trim().toLowerCase();
+                if (searchTerm) {
+                    performHomeSearch(searchTerm);
+                }
+            }
+        });
+        
+        // Also search on input for real-time filtering
+        homeSearchInput.addEventListener('input', function() {
+            const searchTerm = this.value.trim().toLowerCase();
+            if (searchTerm) {
+                performHomeSearch(searchTerm);
+            } else {
+                // Show all courses if search is empty
+                showAllCourses();
+            }
+        });
+    }
+    
     // Search button functionality
     const searchBtns = document.querySelectorAll('.search-btn, .hero-search-btn');
     searchBtns.forEach(btn => {
@@ -1116,6 +1140,62 @@ async function debugUserData() {
 
 // Make debug function available globally
 window.debugUserData = debugUserData;
+
+// Home page search functionality
+function performHomeSearch(searchTerm) {
+    const courseCards = document.querySelectorAll('.course-card');
+    let hasResults = false;
+    
+    courseCards.forEach(card => {
+        const courseText = card.textContent.toLowerCase();
+        if (courseText.includes(searchTerm)) {
+            card.style.display = 'block';
+            card.style.opacity = '1';
+            hasResults = true;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    // Show/hide "No results" message
+    let noResultsMsg = document.getElementById('noSearchResults');
+    if (!hasResults) {
+        if (!noResultsMsg) {
+            noResultsMsg = document.createElement('div');
+            noResultsMsg.id = 'noSearchResults';
+            noResultsMsg.className = 'no-results-message';
+            noResultsMsg.innerHTML = `
+                <div class="no-results-content">
+                    <h3>🔍 No courses found</h3>
+                    <p>Try searching with different keywords or browse all courses.</p>
+                </div>
+            `;
+            document.querySelector('.courses-grid').appendChild(noResultsMsg);
+        }
+    } else if (noResultsMsg) {
+        noResultsMsg.remove();
+    }
+}
+
+function showAllCourses() {
+    const courseCards = document.querySelectorAll('.course-card');
+    courseCards.forEach(card => {
+        card.style.display = 'block';
+        card.style.opacity = '1';
+    });
+    
+    // Clear the search input
+    const homeSearchInput = document.getElementById('homeSearchInput');
+    if (homeSearchInput) {
+        homeSearchInput.value = '';
+    }
+    
+    // Remove "No results" message if it exists
+    const noResultsMsg = document.getElementById('noSearchResults');
+    if (noResultsMsg) {
+        noResultsMsg.remove();
+    }
+}
 
 // Certificate System
 const TOTAL_COURSES = 12;

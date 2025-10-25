@@ -4,7 +4,7 @@
   <meta charset="UTF‑8">
   <meta name="viewport" content="width=device‑width, initial‑scale=1.0">
   <title>CyberSafe & Digital Awareness Portal</title>
-  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="icon" type="image/svg+xml" href="logo1.svg">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -16,13 +16,13 @@
   <header class="simple-header" id="top">
     <div class="simple-header-inner">
       <div class="brand">
-        <img src="logo.svg" alt="CyberSafe Logo" class="brand-logo-img" style="width: 32px; height: 32px; margin-right: 8px;">
+        <img src="logo1.svg" alt="CyberSafe Logo" class="brand-logo-img" style="width: 32px; height: 32px; margin-right: 8px;">
         <span class="brand-text">CyberSafe</span>
       </div>
       <nav class="simple-nav">
         <a href="#courses" class="simple-link">Courses</a>
         <a href="#report" class="simple-link">Report</a>
-        <a href="#must-explore" class="simple-link">News</a>
+        <a href="#must-explore" class="simple-link">Explore</a>
         <a href="#about" class="simple-link">About</a>
       </nav>
       <div class="simple-actions">
@@ -41,7 +41,7 @@
         <h1 class="prompt">Hello, What Do You Want To Learn?</h1>
         <div class="search-row">
            <!-- <span class="search-icon"></span>-->
-          <input class="search-input-large" type="text" placeholder="🔍 Search for courses, topics…">
+          <input id="homeSearchInput" class="search-input-large" type="text" placeholder="🔍 Search for courses, topics…">
         </div>
       </div>
     </section>
@@ -50,7 +50,7 @@
     <section class="courses-section" id="courses">
       <div class="section-head">
         <h2 class="section-label">Courses</h2>
-        <a href="#" class="section-action">View All</a>
+        <a href="#courses" class="section-action" onclick="showAllCourses()">View All</a>
       </div>
       <div class="courses-grid">
         <a href="course1.html" class="course-card">🧭 1. Introduction to Cyber Safety</a>

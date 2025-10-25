@@ -13,7 +13,7 @@
     <header class="simple-header" id="top">
         <div class="simple-header-inner">
             <div class="brand">
-                <span class="brand-logo">🛡️</span>
+                <img src="logo1.svg" alt="CyberSafe Logo" class="brand-logo-img" style="width: 32px; height: 32px; margin-right: 8px;">
                 <span class="brand-text">CyberSafe</span>
             </div>
             <nav class="simple-nav">
@@ -23,8 +23,7 @@
                 <a href="home.html#must-explore" class="simple-link">News</a>
             </nav>
             <div class="simple-actions">
-                <button class="circle-btn" title="Profile">😊</button>
-                <button class="circle-btn" onclick="logout()" title="Logout">Logout</button>
+                <!-- Profile dropdown will be injected by script.js -->
             </div>
         </div>
     </header>
@@ -346,5 +345,6 @@
             `).join('');
         }
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
